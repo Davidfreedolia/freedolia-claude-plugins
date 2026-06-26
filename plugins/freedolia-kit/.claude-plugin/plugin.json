@@ -1,0 +1,12 @@
+{
+  "name": "freedolia-kit",
+  "displayName": "Freedolia Kit",
+  "description": "Pipeline de producte de Freedolia per a Claude Code: freedolia-trucada (buida una trucada de client), freedolia-estudi (estudi complet del projecte), freedolia-prd (idea → PRD), freedolia-spec (feature/bug → spec implementable), freedolia-dev (spec → codi amb revisió adversarial) i freedolia-mvp (orquestra tot el camí fins a un MVP). Català, stack TanStack Start + Supabase, cost com a restricció dura. Autosuficient, sense dependència de BMAD.",
+  "version": "0.1.0",
+  "author": {
+    "name": "David Castellà",
+    "email": "david@freedolia.com"
+  },
+  "license": "UNLICENSED",
+  "keywords": ["freedolia", "prd", "spec", "mvp", "trucada", "discovery", "catala", "supabase", "tanstack"]
+}

@@ -1,0 +1,12 @@
+# Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Editor
+.vscode/
+.idea/
+
+# Temporals
+*.tmp
+scratchpad/
