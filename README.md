@@ -21,7 +21,7 @@ restricció dura** baixat a totes les skills. Autònom: cap dependència de BMAD
 
 ### El pipeline
 
-```
+```text
 trucada ─┐
          ├─→ estudi ─→ prd ─→ spec (×N features) ─→ dev ─→ PR
 idea ────┘
@@ -33,13 +33,33 @@ o deixar que `freedolia-mvp` t'ho condueixi de punta a punta.
 
 ## Instal·lació
 
+### Opció A — skills d'àmbit usuari (funciona a l'extensió VSCode) ✅ recomanada aquí
+
+El comandament `/plugin` NO existeix a l'extensió de VSCode. La via fiable és copiar les skills a
+`~/.claude/skills/` (igual que està instal·lat gstack). Es llisten globalment a tot projecte.
+
+```bash
+# instal·lar / re-sincronitzar després d'editar el repo
+SRC="$HOME/../../c/Projects/freedolia-claude-plugins/plugins/freedolia-kit/skills"   # ajusta la ruta
+for s in freedolia-trucada freedolia-estudi freedolia-prd freedolia-spec freedolia-dev freedolia-mvp; do
+  rm -rf "$HOME/.claude/skills/$s" && cp -r "$SRC/$s" "$HOME/.claude/skills/$s"
+done
 ```
+
+> Com que és una còpia, cada cop que editis una skill al repo cal tornar a executar el bloc per
+> sincronitzar. (Alternativa sense drift: una *junction* de Windows per carpeta.)
+
+### Opció B — plugin de veritat (només a la CLI `claude` d'un terminal)
+
+En un terminal normal (no l'extensió), el comandament `/plugin` sí funciona:
+
+```text
 /plugin marketplace add C:\Projects\freedolia-claude-plugins
 /plugin install freedolia-kit@freedolia
 ```
 
-Després de la primera instal·lació local, quan pugis aquest repo a GitHub pots canviar la font del
-marketplace a `github:Davidfreedolia/freedolia-claude-plugins` perquè sigui igual a totes les màquines.
+Després de pujar aquest repo a GitHub pots canviar la font del marketplace a
+`github:Davidfreedolia/freedolia-claude-plugins` perquè sigui igual a totes les màquines.
 
 ## Convencions del kit
 
