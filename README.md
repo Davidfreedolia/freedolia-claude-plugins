@@ -33,33 +33,40 @@ o deixar que `freedolia-mvp` t'ho condueixi de punta a punta.
 
 ## Instal·lació
 
-### Opció A — skills d'àmbit usuari (funciona a l'extensió VSCode) ✅ recomanada aquí
-
-El comandament `/plugin` NO existeix a l'extensió de VSCode. La via fiable és copiar les skills a
-`~/.claude/skills/` (igual que està instal·lat gstack). Es llisten globalment a tot projecte.
+> ⚠️ El comandament de **xat** `/plugin` NO existeix a l'extensió de VSCode. Però el **CLI `claude plugin`**
+> sí funciona des de qualsevol terminal (i del Bash de l'agent). Aquesta és la via bona: instal·la el
+> plugin de veritat i **surt al panell de plugins**.
 
 ```bash
-# instal·lar / re-sincronitzar després d'editar el repo
-SRC="$HOME/../../c/Projects/freedolia-claude-plugins/plugins/freedolia-kit/skills"   # ajusta la ruta
-for s in freedolia-trucada freedolia-estudi freedolia-prd freedolia-spec freedolia-dev freedolia-mvp; do
-  rm -rf "$HOME/.claude/skills/$s" && cp -r "$SRC/$s" "$HOME/.claude/skills/$s"
-done
+# 1. (opcional) validar el manifest
+claude plugin validate "C:\Projects\freedolia-claude-plugins"
+
+# 2. registrar el marketplace local (scope user = global a tot projecte)
+claude plugin marketplace add "C:\Projects\freedolia-claude-plugins"
+
+# 3. instal·lar el plugin
+claude plugin install freedolia-kit@freedolia
+
+# verificar
+claude plugin list
+claude plugin details freedolia-kit@freedolia
 ```
 
-> Com que és una còpia, cada cop que editis una skill al repo cal tornar a executar el bloc per
-> sincronitzar. (Alternativa sense drift: una *junction* de Windows per carpeta.)
+Cal **recarregar la finestra** de l'extensió perquè el plugin aparegui al panell. Les skills queden
+namespaced: `freedolia-kit:freedolia-trucada`, `freedolia-kit:freedolia-prd`, etc.
 
-### Opció B — plugin de veritat (només a la CLI `claude` d'un terminal)
+**Actualitzar** després d'editar les skills del repo: `claude plugin marketplace update freedolia`
+(la font és aquest directori; no cal re-copiar res).
 
-En un terminal normal (no l'extensió), el comandament `/plugin` sí funciona:
+> Quan pugis el repo a GitHub pots canviar la font a `github:Davidfreedolia/freedolia-claude-plugins`
+> (`claude plugin marketplace remove freedolia` i tornar-lo a afegir amb el repo) per tenir-ho igual a
+> totes les màquines.
 
-```text
-/plugin marketplace add C:\Projects\freedolia-claude-plugins
-/plugin install freedolia-kit@freedolia
-```
+### Alternativa: skills-directory plugin (sense marketplace)
 
-Després de pujar aquest repo a GitHub pots canviar la font del marketplace a
-`github:Davidfreedolia/freedolia-claude-plugins` perquè sigui igual a totes les màquines.
+També es pot deixar tot el `plugins/freedolia-kit/` dins `~/.claude/skills/freedolia-kit/` (amb el seu
+`.claude-plugin/plugin.json`): es carrega sol com a `freedolia-kit@skills-dir` i també surt al panell.
+Útil si no vols mantenir un marketplace. `claude plugin init <nom>` scaffoldeja aquest format.
 
 ## Convencions del kit
 
