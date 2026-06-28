@@ -9,7 +9,7 @@
     {
       "name": "freedolia-kit",
       "source": "./plugins/freedolia-kit",
-      "description": "Pipeline de producte Freedolia: trucada → estudi del projecte → PRD → spec → MVP. Català per defecte, stack TanStack Start + Supabase, cost com a restricció dura. Autònom (sense BMAD)."
+      "description": "Pipeline de producte Freedolia: trucada/web → estudi del projecte → PRD → spec → MVP. Català per defecte, stack TanStack Start + Supabase, cost com a restricció dura. Autònom (sense BMAD)."
     }
   ]
 }

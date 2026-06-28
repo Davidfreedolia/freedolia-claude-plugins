@@ -13,6 +13,7 @@ restricció dura** baixat a totes les skills. Autònom: cap dependència de BMAD
 | Skill | Què fa | Entrada → Sortida |
 |---|---|---|
 | `freedolia-trucada` | Buida una trucada/reunió de client i en treu els punts clau | Text transcrit → resum estructurat |
+| `freedolia-web` | Buida el web d'un client (qui són, equip, serveis, necessitats) | URL(s) → brief estructurat |
 | `freedolia-estudi` | Estudi complet del projecte (codi + docs + negoci) | Repo → mapa + oportunitats |
 | `freedolia-prd` | Aterra una idea en un PRD buildable | Idea/notes/trucada → `prd.md` |
 | `freedolia-spec` | Converteix una feature o bug en spec implementable | Feature del PRD → `spec-*.md` |
@@ -23,6 +24,7 @@ restricció dura** baixat a totes les skills. Autònom: cap dependència de BMAD
 
 ```text
 trucada ─┐
+web ─────┤
          ├─→ estudi ─→ prd ─→ spec (×N features) ─→ dev ─→ PR
 idea ────┘
                     └──────────  freedolia-mvp ho encadena tot  ──────────┘
