@@ -37,8 +37,8 @@ Guardrail de producte que travessa tots els verticals: **la IA proposa, l'humà 
 
 **De la carta de la Isabel**, no d'un brainstorming. És l'anàlisi dels reptes que directius
 d'empreses catalanes li van compartir als programes de Generación Digital PYMEs, i d'allà
-surten els cinc verticals i, sobretot, **els contactes**. Llegeix-la abans de res:
-`freedolia-hub/docs/carta-isabel-verticals.md`.
+surten els cinc verticals i, sobretot, **els contactes**. Llegeix-la abans de res: viatja
+amb aquesta skill, a `references/carta-isabel-verticals.md`.
 
 La troballa que fa que el mateix motor serveixi sectors molt diferents: dels 10 reptes que
 ella va homogeneïtzar, **sis són horitzontals** — integració entre sistemes, informació

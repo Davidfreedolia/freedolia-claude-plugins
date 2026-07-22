@@ -28,6 +28,7 @@ description: >
 - **El fallback a mock no es trenca mai.** Sense env vars, l'app ha de seguir servint `src/data/mock.ts`. És la xarxa de seguretat de la demo comercial.
 - **Mai `service_role` al front.** Només l'anon key. Comprova que no surt al bundle.
 - **Additiu sempre.** El projecte Supabase és compartit: cap `drop`, cap canvi que toqui schemas d'altres productes.
+- **Un producte = un repo de GitHub + un projecte de Vercel. Sempre.** El que es comparteix és el projecte Supabase (amb schema dedicat), res més. `freedolia-hub` és un producte com qualsevol altre, **no un calaix comú**: no hi deixis mai documents, estudis ni material d'un altre producte. Si un document no té repo on anar, va al kit (`references/`), no al repo del veí.
 
 ## 1. Abans de començar
 
