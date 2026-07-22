@@ -1,8 +1,8 @@
 {
   "name": "freedolia-kit",
   "displayName": "Freedolia Kit",
-  "description": "Pipeline de producte de Freedolia per a Claude Code: freedolia-trucada (buida una trucada de client), freedolia-web (buida el web d'un client), freedolia-estudi (estudi complet del projecte), freedolia-prd (idea → PRD), freedolia-spec (feature/bug → spec implementable), freedolia-dev (spec → codi amb revisió adversarial) i freedolia-mvp (orquestra tot el camí fins a un MVP). Català, stack TanStack Start + Supabase, cost com a restricció dura. Autosuficient, sense dependència de BMAD.",
-  "version": "0.2.0",
+  "description": "Pipeline de producte de Freedolia per a Claude Code: freedolia-trucada (buida una trucada de client), freedolia-web (buida el web d'un client), freedolia-oportunitat (sector → forat → prompt de Lovable), freedolia-comercial (logo + deck de 9 + guió de 3 min), freedolia-aterratge (baixa un MVP de Lovable al nostre terreny: Supabase, RLS, auth, desacoblament), freedolia-estudi (estudi complet del projecte), freedolia-prd (idea → PRD), freedolia-spec (feature/bug → spec implementable), freedolia-dev (spec → codi amb revisió adversarial) i freedolia-mvp (orquestra els dos camins fins a un MVP). Català, stack TanStack Start + Supabase, cost com a restricció dura. Autosuficient, sense dependència de BMAD.",
+  "version": "0.3.0",
   "author": {
     "name": "David Castellà",
     "email": "david@freedolia.com"

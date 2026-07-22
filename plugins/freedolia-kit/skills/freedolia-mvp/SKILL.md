@@ -22,7 +22,39 @@ hi delega, i gestiona les fronteres. El cervell de cada fase és la skill especi
 - **Cost com a restricció dura** travessa tot el pipeline. Si en qualsevol fase apareix una idea amb cost (IA/Places), marca-la i no la donis per bona sense topall i ok explícit. [[cost-es-la-restriccio-dura]]
 - **Entra on calgui.** Si el David ja té PRD, salta a spec. Si ja té spec, salta a dev. No facis fases que ja estan fetes — comprova `_bmad-output/` abans.
 
-## 1. El pipeline
+## 1. Els dos pipelines
+
+Hi ha **dos camins** segons si el producte existeix o no. Identifica quin toca abans de res.
+
+### A · Vertical nou (no hi ha ni repo ni codi)
+
+És el camí que han seguit Clinicull, freehospitality i StockPilot. Dues vies **en paral·lel**:
+
+```
+ CARTA DE LA ISABEL / sector
+            │
+            ▼
+     FASE 0 · freedolia-oportunitat   (sector → dolors, capes, forat, wedge, nom)
+            │  checkpoint: el David valida el wedge
+            ▼
+     FASE 1 · [Lovable]               (enganxar el prompt → MVP visual amb mock)   ← fora de Claude
+            │  checkpoint: l'MVP té cara i les 7 rutes
+            ▼                                          ╲
+     FASE 2 · freedolia-aterratge     (Supabase propi,   ╲   EN PARAL·LEL des de la Fase 0:
+              RLS, serveis, auth,                         ╲  freedolia-comercial
+              desacoblar Lovable)                          ╲ (logo → deck de 9 → guió de 3 min)
+            │  checkpoint: dades reals en preview
+            ▼
+     FASE 3 · freedolia-spec ×N       (les escriptures: aprovar, editar, escalar)
+            │
+            ▼
+     FASE 4 · freedolia-dev ×N
+```
+
+**No cal PRD en aquest camí**: el producte ja el defineix l'anàlisi sectorial + el prompt de
+Lovable ("PRD de facto"). Salta a spec quan l'MVP estigui aterrat.
+
+### B · Projecte Freedolia que ja existeix
 
 ```
             ┌─ (si l'origen és una trucada) ─┐
@@ -46,6 +78,16 @@ hi delega, i gestiona les fronteres. El cervell de cada fase és la skill especi
 ```
 
 ## 2. Com conduir cada frontera
+
+### Camí A (vertical nou)
+
+- **Sector → Fase 0.** Sempre `freedolia-oportunitat`. **Sense beachhead no s'obre vertical**: si la carta de la Isabel no hi anomena empreses, això és el primer risc a posar sobre la taula, no un detall.
+- **Fase 0 → 1.** El David valida el **wedge** (una frase) i el **nom de treball** abans de generar res. El prompt l'enganxa ell a Lovable; tu no hi entres.
+- **Fase 1 → 2.** L'MVP baixa amb `freedolia-aterratge`. **Clona del repo de GitHub, mai del zip.** Copia també els documents del Drive al repo (`docs/`): el Drive demana login i cap agent hi podrà entrar després.
+- **Fase 2 → 3.** Un MVP aterrat és **de només lectura**: els botons d'aprovar/editar/escalar són decoratius. Aquí és on comença la feina de veritat, i ja no cal tocar l'esquema si l'RLS es va fer amb `with check`.
+- **La via comercial no espera.** `freedolia-comercial` pot arrencar en acabar la Fase 0, amb la paleta que fixa el prompt de Lovable. No la deixis per al final: és el que permet ensenyar el producte mentre encara s'està construint.
+
+### Camí B (projecte existent)
 
 - **Origen → Fase 0/1.** Si el material és una trucada/notes → `freedolia-trucada` primer. Si és una idea ja escrita → directe a `freedolia-estudi` (per ancorar-la al projecte real). Si és un projecte nou de client sense codi → estudi lleuger del material i salta a PRD.
 - **Fase 1 → 2.** L'estudi dóna context i oportunitats. Confirma amb el David QUINA oportunitat es converteix en producte abans d'obrir `freedolia-prd`.
