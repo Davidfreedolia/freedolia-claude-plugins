@@ -19,6 +19,21 @@ restricció dura** baixat a totes les skills. Autònom: cap dependència de BMAD
 | `freedolia-spec` | Converteix una feature o bug en spec implementable | Feature del PRD → `spec-*.md` |
 | `freedolia-dev` | Implementa una spec amb revisió adversarial | `spec-*.md` → codi + PR |
 | `freedolia-mvp` | Orquestra tot el camí fins a un MVP | Idea/trucada → MVP |
+| `freedolia-oportunitat` | Sector → forat de mercat → prompt de Lovable | Sector → prompt + tesi |
+| `freedolia-aterratge` | Baixa un MVP de Lovable al nostre terreny (Supabase, RLS, auth) | MVP de Lovable → repo propi |
+| `freedolia-comercial` | Logo + deck de 9 + guió de 3 min | Tesi → material de venda |
+| `freedolia-correccions` | Tanda de correccions de client → llista verificada → implementació | Llista del client → codi |
+| `freedolia-noticia` | El que passa de debò al client → notícia verificada i trilingüe | Fets → article publicable |
+| `freedolia-automatismes` | Instal·la els avisos que salten sols | Normes de la casa → hooks |
+
+### Transversals (no són una baula del pipeline)
+
+Van a qualsevol projecte i en qualsevol moment.
+
+| Skill | Què fa | Per què existeix |
+|---|---|---|
+| `freedolia-claus` | Genera i retira tokens i secrets **sense que el text en clar entri en cap conversa**: es genera a la màquina, l'enllaç va a un fitxer, a la base només hi arriba el hash | Hem hagut de rotar un token dues vegades perquè el valor va acabar en una sortida d'eina |
+| `freedolia-tauler` | El tauler viu del projecte: **una sola pàgina publicada**, bilingüe, amb diagrames de caixes i caselles que es desen a la base | Cinc pàgines temàtiques volen dir que ningú sap quina està al dia, i un equip no tècnic no llegeix un `ROADMAP.md` |
 
 ### El pipeline
 
@@ -77,6 +92,9 @@ També es pot deixar tot el `plugins/freedolia-kit/` dins `~/.claude/skills/free
 - **Artefactes** a `_bmad-output/planning-artifacts/` (PRDs) i `_bmad-output/implementation-artifacts/` (specs), igual que ja fa freedolia-hub.
 - **Gate abans de commit**: `npm run typecheck` (mai `npm run build` dins del workspace IA).
 - **Git**: feina a `development`, mai push directe a `main`. Missatges `M-NN: descripció`.
+- **Secrets**: el text en clar **no surt d'on s'ha generat** (`freedolia-claus`). A la base només el hash; retirar és **caducar**, no esborrar; i un secret perdut **es regenera**, no es busca.
+- **Un tauler per projecte** (`freedolia-tauler`), **sempre al mateix URL**, i escrit perquè l'entengui l'Imma al mòbil. Els identificadors de les caselles **no canvien mai**: canviar-ne un esborra una casella marcada.
+- **Es comprova rellegint** (G3), i també després de publicar: el missatge del publicador no és la comprovació.
 
 > `freedolia-design` (sistema de disseny) NO viu aquí: enllaça a `src/` de freedolia-hub, així que es
 > queda al `.claude/skills/` d'aquell repo.
