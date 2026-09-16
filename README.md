@@ -72,12 +72,39 @@ claude plugin details freedolia-kit@freedolia
 Cal **recarregar la finestra** de l'extensió perquè el plugin aparegui al panell. Les skills queden
 namespaced: `freedolia-kit:freedolia-trucada`, `freedolia-kit:freedolia-prd`, etc.
 
-**Actualitzar** després d'editar les skills del repo: `claude plugin marketplace update freedolia`
-(la font és aquest directori; no cal re-copiar res).
+### Actualitzar: **dues** ordres, no una
 
-> Quan pugis el repo a GitHub pots canviar la font a `github:Davidfreedolia/freedolia-claude-plugins`
-> (`claude plugin marketplace remove freedolia` i tornar-lo a afegir amb el repo) per tenir-ho igual a
-> totes les màquines.
+Aquí hi ha un parany que ens ha costat dos mesos de skills invisibles. `marketplace update` refresca
+el **catàleg**; el que Claude carrega de veritat és la **còpia instal·lada**, i aquesta es queda a la
+versió que hi hagués fins que li ho dius:
+
+```bash
+claude plugin marketplace update freedolia   # refresca el catàleg
+claude plugin update freedolia-kit@freedolia # actualitza el que es carrega
+claude plugin list                            # comprova la versió
+```
+
+**El 16/09/2026 el catàleg anava per 0.7.0 i la còpia instal·lada era la 0.3.1 del 22 de juliol**, o
+sigui que `freedolia-correccions`, `freedolia-noticia` i `freedolia-automatismes` **no s'havien pogut
+invocar mai**. Si una skill no respon, el primer que es mira és `claude plugin list`. I cal
+**recarregar la finestra** perquè el canvi s'apliqui.
+
+### On viu, i com es té a més d'un ordinador
+
+- **Font de veritat:** aquest repo, a `github:Davidfreedolia/freedolia-claude-plugins` (**privat**).
+- **A la màquina del David** el marketplace apunta al **directori local**
+  (`C:\Projects\freedolia-claude-plugins`), a posta: així una edició d'una skill té efecte de
+  seguida, sense passar per GitHub.
+- **En un ordinador nou, o per a qualsevol altra persona de l'equip**, s'afegeix des de GitHub:
+
+```bash
+claude plugin marketplace add Davidfreedolia/freedolia-claude-plugins
+claude plugin install freedolia-kit@freedolia
+```
+
+- Cal ser **col·laborador del repo** (és privat): sense això, `marketplace add` dona 404.
+- **Regla:** una skill no és compartida fins que el commit és a GitHub. Editar-la al directori local
+  la fa servir **només aquí**.
 
 ### Alternativa: skills-directory plugin (sense marketplace)
 
